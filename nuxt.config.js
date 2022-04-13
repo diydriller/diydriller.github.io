@@ -64,6 +64,6 @@ export default {
     port:3001
   },
   router: {
-    base: '/diydriller.github.io/'
+    base: '/'
   }
 }
