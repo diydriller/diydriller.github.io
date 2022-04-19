@@ -1,6 +1,6 @@
 <template>
   <div class="sub_menu_item">
-    <a :href="'/'+title+'/'+subTitle">{{subTitle}}</a>
+    <NuxtLink :to="'/'+title+'/'+subTitle">{{subTitle}}</NuxtLink>
   </div>
 </template>
 

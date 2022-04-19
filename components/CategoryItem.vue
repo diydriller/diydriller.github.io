@@ -1,24 +1,23 @@
 <template>
   <div class="item">
     <div class="category_item">
-      <a href="#">
-        <span class="category_img">
-          <img :src="require(`~/assets/icon/${title}.png`)">
-        </span>
-        <span class="category_name">{{title}}</span>
-      </a>
-      <i class='bx bx-chevron-down' @click="toggleMenu"></i>
+      <span class="category_img">
+        <img :src="require(`~/assets/icon/${title}.png`)">
+      </span>
+      <span class="category_name">{{title}}</span>
+      <i class='bx bx-chevron-down' @click.prevent="toggleMenu" :class="{'show_menu':downButtonClicked}"></i>
     </div>
     <sub-menu
       :subCategories="subCategories"
       :title="title"
+      :downButtonClicked="downButtonClicked"
     />
   </div>
 </template>
 
 
 <script>
-import { defineComponent } from '@vue/composition-api';
+import { defineComponent,ref } from '@vue/composition-api';
 import SubMenu from '@/components/SubMenu';
 
 export default defineComponent({
@@ -27,13 +26,13 @@ export default defineComponent({
   },
   props:['title','icon','subCategories'],
   setup(){
+    let downButtonClicked=ref(false);
 
-    const toggleMenu=function (e){
-      let parent=e.target.parentElement.parentElement;
-      parent.classList.toggle("showMenu");
+    const toggleMenu=()=>{
+      downButtonClicked.value=!downButtonClicked.value;
     }
 
-    return {toggleMenu};
+    return {toggleMenu,downButtonClicked};
   }
 });
 </script>
@@ -83,7 +82,8 @@ export default defineComponent({
   font-size: 20px;
   transition: all 0.3s ease;
 }
-.item.showMenu i{
+
+i.show_menu{
   transform: rotate(-180deg);
 }
 

@@ -14,7 +14,7 @@
 </template>
 
 <script lang="ts">
-import {defineComponent,computed} from '@vue/composition-api';
+import {defineComponent,computed , onMounted} from '@vue/composition-api';
 import CategoryItem from "@/components/CategoryItem.vue";
 import TitleItem from "@/components/TitleItem.vue";
 import ProfileItem from "@/components/ProfileItem.vue"
@@ -30,7 +30,6 @@ export default defineComponent({
     const categories=computed(function (){
       return Category.categories;
     });
-
     return {categories};
   }
 })
