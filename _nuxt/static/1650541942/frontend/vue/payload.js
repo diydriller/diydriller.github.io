@@ -1,0 +1,1 @@
+__NUXT_JSONP__("/frontend/vue", {data:[{}],fetch:{},mutations:[]});
