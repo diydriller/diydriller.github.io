@@ -11,7 +11,6 @@
       :subCategories="subCategories"
       :title="title"
       :downButtonClicked="downButtonClicked"
-      class="sub_menu"
     />
   </div>
 </template>
@@ -43,79 +42,77 @@ export default defineComponent({
 </script>
 
 
-<style scoped>
+<style lang="scss" scoped>
 
 .item{
   position:relative;
 }
 
-/* 카테고리 아이템 */
+
 .category_item{
   display: flex;
   align-items: center;
   justify-content: space-between;
   trasition: all 0.4s ease;
-}
-
-.category_item:hover{
-  background: #1d1b31;
-}
-
-.item:hover .sub_menu.drop_down{
-  opacity:1;
-  pointer-events: auto;
-  top:0px;
-}
-
-/* 카테고리 아이템 > 이미지 */
-.category_item .category_img{
-  height: 50px;
-  min-width: 78px;
-  line-height: 50px;
-  text-align: center;
-}
-
-.category_item img{
-  filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(298deg) brightness(103%) contrast(103%);
-  vertical-align:middle;
-}
-
-.category_item a{
-  display: flex;
-  align-items: center;
-  text-decoration: none;
-}
-
-/* 카테고리 아이템 > 다운 버튼 */
-.category_item i{
-  height: 50px;
-  min-width: 78px;
-  color:#fff;
-  text-align: center;
-  line-height: 50px;
-  font-size: 20px;
-  transition: all 0.3s ease;
-  cursor: pointer;
-}
-
-.category_item i.drop_down {
-  display: none
-}
-
-i.show_menu{
-  transform: rotate(-180deg);
-}
 
 
-/* 카테고리 아이템 > 카테고리 이름 */
-.category_item .category_name{
-  font-size: 18px;
-  font-weight: 400;
-  color:#fff;
+  &:hover{
+    background: #1d1b31;
+  }
+
+
+  .category_img{
+    height: 50px;
+    min-width: 78px;
+    line-height: 50px;
+    text-align: center;
+  }
+
+
+  img{
+    filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(298deg) brightness(103%) contrast(103%);
+    vertical-align:middle;
+  }
+
+
+  a{
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+  }
+
+
+  i{
+    height: 50px;
+    min-width: 78px;
+    color:#fff;
+    text-align: center;
+    line-height: 50px;
+    font-size: 20px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+
+    &.drop_down{
+      display: none;
+    }
+
+    &.show_menu{
+      transform: rotate(-180deg);
+    }
+  }
+
+
+  .category_name{
+    font-size: 18px;
+    font-weight: 400;
+    color:#fff;
+
+    &.drop_down{
+      display: none;
+    }
+  }
 }
 
-.category_item .category_name.drop_down{
-  display: none;
-}
+
 
 </style>

@@ -22,16 +22,7 @@ export default  defineComponent({
 })
 </script>
 
-<style>
-article {
-  display: block;
-  margin: 0 auto;
-  padding: 50px 30px;
-  max-width: 800px;
-}
-h1 {
-  font-size: 28px;
-  font-weight: 900;
-  margin-bottom: 30px;
-}
+<style lang="scss" scoped>
+@import "./assets/scss/article-common";
+
 </style>

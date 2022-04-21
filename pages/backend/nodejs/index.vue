@@ -30,19 +30,8 @@ export default defineComponent({
 })
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 
-.preview {
-  margin: 0 auto;
-  max-width: 800px;
-}
-
-.article-preview {
-  padding: 15px;
-  background: #FFF;
-  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
-  margin: 0px auto 10px;
-}
+@import "./assets/scss/aricle-preview-common";
 
 </style>

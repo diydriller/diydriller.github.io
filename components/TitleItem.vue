@@ -21,30 +21,33 @@ export default defineComponent({
 </script>
 
 
-<style scoped>
+<style lang="scss" scoped>
+
 .logo_detail{
   display: flex;
   height: 60px;
   width: 100%;
   align-items: center;
-}
-.logo_detail i{
-  color: #fff;
-  font-size: 30px;
-  text-align: center;
-  height: 50px;
-  min-width: 78px;
-  line-height: 50px;
+
+  i{
+    color: #fff;
+    font-size: 30px;
+    text-align: center;
+    height: 50px;
+    min-width: 78px;
+    line-height: 50px;
+  }
+
+  .logo_name{
+    color: #fff;
+    font-size: 22px;
+    font-weight: 600;
+
+    &.drop_down{
+      display: none;
+    }
+  }
 }
 
-.logo_detail .logo_name{
-  color: #fff;
-  font-size: 22px;
-  font-weight: 600;
-}
-
-.logo_detail .logo_name.drop_down{
-  display: none;
-}
 
 </style>

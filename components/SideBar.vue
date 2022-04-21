@@ -41,21 +41,23 @@ export default defineComponent({
 })
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+@import './assets/scss/variables.scss';
+
+
 .side_bar{
   position: fixed;
   top:0;
   left:0;
   height: 100%;
-  width: 260px;
+  width: $before-dropdown-width;
   background: #11101d;
   z-index: 100;
-}
 
-.side_bar.drop_down{
-  width:78px;
+  &.drop_down{
+    width: $after-dropdown-width;
+  }
 }
-
 
 .category{
   padding-top: 30px;

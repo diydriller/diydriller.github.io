@@ -36,32 +36,36 @@ export default defineComponent({
 });
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+
+.item:hover .drop_down{
+  opacity:1;
+  pointer-events: auto;
+  top:0px;
+}
 
 .sub_menu {
   padding: 6px;
   text-align: center;
   background: #1d1b31;
   display: none;
+
+  &.show_menu{
+    display: block;
+  }
+
+  &.drop_down{
+    position: absolute;
+    left: 100%;
+    display: block;
+    top:-10px;
+    padding: 10px 20px;
+    border-radius: 0 6px 6px 0;
+    opacity: 0;
+    pointer-events: none;
+    transition: 0.4s ease;
+  }
 }
-
-.sub_menu.show_menu {
-  display: block;
-}
-
-.sub_menu.drop_down{
-  position: absolute;
-  left: 100%;
-  display: block;
-  top:-10px;
-  padding: 10px 20px;
-  border-radius: 0 6px 6px 0;
-  opacity: 0;
-  pointer-events: none;
-  transition: 0.4s ease;
-}
-
-
 
 </style>
 
