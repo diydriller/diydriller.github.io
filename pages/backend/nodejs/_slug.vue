@@ -4,12 +4,19 @@
   </article>
 </template>
 
-<script>
-import { defineComponent } from '@vue/composition-api'
+<script lang="ts">
+import {defineComponent, useAsync, useContext} from '@nuxtjs/composition-api'
+import {Article} from "@/interfaces/Article";
+
 export default  defineComponent({
-  async asyncData({ $content, params }) {
-    const article = await $content('backend/nodejs', params.slug).fetch();
-    return { article }
+  setup(){
+    const { $content,params} = useContext();
+    const article = useAsync(()=>{
+      return $content('backend/nodejs', params.value.slug)
+        .fetch<Article>();
+    })
+
+    return {article}
   }
 })
 </script>

@@ -1,7 +1,7 @@
 <template>
   <div class="preview-container">
     <div class="preview">
-      <div class="article-preview" v-for="articlePreview of articlePreviews" :key="articlePreview">
+      <div class="article-preview" v-for="articlePreview of articlePreviews" :key="articlePreview.title">
         <nuxt-link :to="'nodejs/'+articlePreview.slug">
           <h3>{{articlePreview.title}}</h3>
         </nuxt-link>
@@ -10,14 +10,21 @@
   </div>
 </template>
 
-<script>
-import { defineComponent } from '@vue/composition-api'
+<script lang="ts">
+import {defineComponent, useAsync, useContext} from '@nuxtjs/composition-api'
+import {ArticlePreview} from "@/interfaces/ArticlePreview";
+
 export default defineComponent({
-  async asyncData({$content,params}) {
-    const articlePreviews = await $content('backend/nodejs',params.slug)
-      .only(['title','description','slug'])
-      .sortBy('createdAt','asc')
-      .fetch();
+  setup(){
+    const { $content,params} = useContext();
+
+    const articlePreviews = useAsync(()=>{
+      return $content('backend/nodejs',params.value.slug)
+        .only(['title','slug'])
+        .sortBy('createdAt','asc')
+        .fetch<ArticlePreview>();
+    })
+
     return {articlePreviews}
   }
 })
@@ -35,7 +42,7 @@ export default defineComponent({
   background: #FFF;
   box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
-  margin: 10px auto 10px;
+  margin: 0px auto 10px;
 }
 
 </style>

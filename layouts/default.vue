@@ -1,7 +1,8 @@
 <template>
   <div>
-    <sidebar/>
-    <div class="content">
+    <side-bar/>
+    <navigation-bar class="nav" :class="{'drop_down':dropDownButtonClicked}"/>
+    <div class="content" :class="{'drop_down':dropDownButtonClicked}">
       <Nuxt/>
     </div>
   </div>
@@ -9,15 +10,23 @@
 
 
 <script lang="ts">
-import { defineComponent } from '@vue/composition-api';
-import Sidebar from "@/components/Sidebar.vue";
+import {defineComponent, useStore, computed,ref} from '@nuxtjs/composition-api'
+import { ButtonStoreType } from "~/store/button"
+import SideBar from "@/components/SideBar.vue";
+import NavigationBar from "@/components/NavigationBar.vue";
 
 export default defineComponent({
   components:{
-    Sidebar
+    SideBar,
+    NavigationBar
   },
   setup(){
-    return {}
+
+    const store=useStore<ButtonStoreType>();
+
+    const dropDownButtonClicked = ref(computed(()=>store.getters["button/dropDownButtonState"]));
+
+    return {dropDownButtonClicked}
   }
 });
 </script>
@@ -25,7 +34,23 @@ export default defineComponent({
 
 <style scoped>
 
-.content{
-  margin-left: 260px;
+
+.nav ,
+.content {
+  position: relative;
+  width: calc(100% - 260px);
+  left: 260px;
 }
+
+.content {
+  height: 100vh;
+  background: #FFFFFF;
+}
+
+.nav.drop_down ,
+.content.drop_down {
+  left: 78px;
+  width: calc(100% - 78px);
+}
+
 </style>

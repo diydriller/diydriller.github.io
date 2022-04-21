@@ -1,5 +1,5 @@
 <template>
-  <div class="sidebar">
+  <div class="side_bar" :class="{'drop_down':dropDownButtonClicked}">
     <title-item/>
     <div class="category">
       <category-item v-for="category in categories"
@@ -14,11 +14,12 @@
 </template>
 
 <script lang="ts">
-import {defineComponent,computed , onMounted} from '@vue/composition-api';
+import {defineComponent, computed, useStore, ref} from '@nuxtjs/composition-api'
 import CategoryItem from "@/components/CategoryItem.vue";
 import TitleItem from "@/components/TitleItem.vue";
 import ProfileItem from "@/components/ProfileItem.vue"
-import Category from "~/data/category";
+import Category from "@/data/category";
+import {ButtonStoreType} from "~/store/button";
 
 export default defineComponent({
   components:{
@@ -27,23 +28,35 @@ export default defineComponent({
     ProfileItem
   },
   setup(){
+    const store=useStore<ButtonStoreType>();
+
+    const dropDownButtonClicked = ref(computed(()=>store.getters["button/dropDownButtonState"]));
+
     const categories=computed(function (){
       return Category.categories;
     });
-    return {categories};
+
+    return {categories,dropDownButtonClicked};
   }
 })
 </script>
 
 <style scoped>
-.sidebar{
+.side_bar{
   position: fixed;
   top:0;
   left:0;
   height: 100%;
   width: 260px;
   background: #11101d;
+  z-index: 100;
 }
+
+.side_bar.drop_down{
+  width:78px;
+}
+
+
 .category{
   padding-top: 30px;
 }

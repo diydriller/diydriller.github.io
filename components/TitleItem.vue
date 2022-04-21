@@ -1,13 +1,23 @@
 <template>
   <div class="logo_detail">
     <i class='bx bxl-blogger'></i>
-    <span class="logo_name">개발 블로그</span>
+    <span class="logo_name" :class="{'drop_down':dropDownButtonClicked}">개발 블로그</span>
   </div>
 </template>
 
-<script>
-export default{
-}
+<script lang="ts">
+import {defineComponent, computed, useStore, ref} from '@nuxtjs/composition-api';
+import {ButtonStoreType} from "@/store/button";
+
+export default defineComponent({
+  setup(){
+    const store=useStore<ButtonStoreType>();
+
+    const dropDownButtonClicked = ref(computed(()=>store.getters["button/dropDownButtonState"]));
+
+    return {dropDownButtonClicked}
+  }
+})
 </script>
 
 
@@ -31,6 +41,10 @@ export default{
   color: #fff;
   font-size: 22px;
   font-weight: 600;
+}
+
+.logo_detail .logo_name.drop_down{
+  display: none;
 }
 
 </style>

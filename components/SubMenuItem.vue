@@ -4,10 +4,15 @@
   </div>
 </template>
 
-<script>
-export default {
-  props:['subTitle','title']
-}
+<script lans="ts">
+import { defineComponent } from '@vue/composition-api'
+
+export default defineComponent({
+  props:['subTitle','title'],
+  setup(){
+
+  }
+});
 </script>
 
 <style scoped>
