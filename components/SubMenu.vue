@@ -9,9 +9,8 @@
 </template>
 
 <script lang="ts">
-import { defineComponent,reactive,computed } from '@vue/composition-api'
 import SubMenuItem from '@/components/SubMenuItem.vue';
-import {ref, useStore} from "@nuxtjs/composition-api";
+import {ref, useStore,reactive,computed,defineComponent} from "@nuxtjs/composition-api";
 import {ButtonStoreType} from "~/store/button";
 
 export default defineComponent({

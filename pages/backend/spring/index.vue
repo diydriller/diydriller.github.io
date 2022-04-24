@@ -25,6 +25,7 @@ export default defineComponent({
         .fetch<ArticlePreview>();
     });
 
+
     return {articlePreviews}
   }
 })

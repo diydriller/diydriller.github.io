@@ -11,5 +11,7 @@
 ## 구현사항
 * 사이드바
   * 카테고리
+  * 카테고리 별 글 개수
 * 네비게이션바
-  * dropdown menu
+  * dropdown sidebar
+* 클릭 이펙트

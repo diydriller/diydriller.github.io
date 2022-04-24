@@ -23,11 +23,15 @@ export default {
 
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
-    './assets/css/common.css'
+    './assets/scss/common.scss'
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
+    {
+      src: './plugins/common.js',
+      mode: 'client'
+    }
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -70,5 +74,5 @@ export default {
     scss: [
       './assets/scss/*.scss'
     ]
-  },
+  }
 }

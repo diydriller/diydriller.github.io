@@ -52,7 +52,7 @@ export default defineComponent({
   height: 100%;
   width: $before-dropdown-width;
   background: #11101d;
-  z-index: 100;
+  z-index: 10;
 
   &.drop_down{
     width: $after-dropdown-width;

@@ -1,5 +1,5 @@
 <template>
-  <div class="navigation_bar" :class="{'drop_down':dropDownButtonClicked}">
+  <div class="navigation_bar" :class="{'drop_down': dropDownButtonClicked}">
     <i class="bx bx-menu" @click.prevent="dropDownBar"></i>
     <div class="list">
       <NuxtLink to="/">Home</NuxtLink>
