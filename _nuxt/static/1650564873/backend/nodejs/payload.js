@@ -1,1 +1,0 @@
-__NUXT_JSONP__("/backend/nodejs", {data:[{}],fetch:{},mutations:[]});
