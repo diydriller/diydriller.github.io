@@ -1,29 +1,40 @@
 <template>
     <div class="sub_menu_item">
-      <NuxtLink :to="'/'+title+'/'+subTitle">{{subTitle}}</NuxtLink>
+      <NuxtLink :to="'/'+name+'/'+subName">{{subName}}</NuxtLink>
       <div class="num">
-        {{articles.length}}
+        {{num}}
       </div>
     </div>
 </template>
 
 <script lang="ts">
-import {useFetch, useContext, defineComponent, ref} from "@nuxtjs/composition-api";
+import {useFetch, useContext, defineComponent, ref, onMounted} from "@nuxtjs/composition-api";
 import {ArticlePreview} from "~/interfaces/ArticlePreview";
 
 export default defineComponent({
-  props:['subTitle','title'],
+  props:['subName','name','num'],
   setup(props){
 
     const { $content} = useContext();
 
     let articles:any=ref(null);
-    useFetch(async () => {
-      articles.value = await $content({deep: true})
-        .where({dir: `/${props.title}/${props.subTitle}`})
-        .only(['title','slug'])
-        .fetch<ArticlePreview>();
-    }).fetch();
+
+    // useFetch(async () => {
+    //   articles.value = await $content({deep: true})
+    //     .where({dir: `/${props.title}/${props.subTitle}`})
+    //     .only(['title','slug'])
+    //     .fetch<ArticlePreview>();
+    // }).fetch();
+
+    // let tmp:any=ref(null);
+    // useFetch(async () => {
+    //   tmp.value = await $content({deep: true})
+    //     .fetch();
+    // }).fetch();
+    //
+    //
+    // console.log(tmp);
+
 
     return {articles};
   }

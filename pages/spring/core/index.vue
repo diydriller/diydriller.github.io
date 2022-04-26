@@ -2,7 +2,7 @@
   <div class="preview-container">
     <div class="preview">
       <div class="article-preview" v-for="articlePreview of articlePreviews" :key="articlePreview.title">
-        <nuxt-link :to="'spring/'+articlePreview.slug">
+        <nuxt-link :to="'core/'+articlePreview.slug">
           <h3>{{articlePreview.title}}</h3>
         </nuxt-link>
       </div>
@@ -19,7 +19,7 @@ export default defineComponent({
     const { $content,params} = useContext();
 
     const articlePreviews = useAsync(()=>{
-      return $content('backend/spring',params.value.slug)
+      return $content('spring/core',params.value.slug)
         .only(['title','slug'])
         .sortBy('createdAt','asc')
         .fetch<ArticlePreview>();

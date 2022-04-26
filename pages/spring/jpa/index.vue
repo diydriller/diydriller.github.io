@@ -2,7 +2,7 @@
   <div class="preview-container">
     <div class="preview">
       <div class="article-preview" v-for="articlePreview of articlePreviews" :key="articlePreview.title">
-        <nuxt-link :to="'vue/'+articlePreview.slug">
+        <nuxt-link :to="'jpa/'+articlePreview.slug">
           <h3>{{articlePreview.title}}</h3>
         </nuxt-link>
       </div>
@@ -19,7 +19,7 @@ export default defineComponent({
     const { $content,params} = useContext();
 
     const articlePreviews = useAsync(()=>{
-      return $content('frontend/vue',params.value.slug)
+      return $content('spring/jpa',params.value.slug)
         .only(['title','slug'])
         .sortBy('createdAt','asc')
         .fetch<ArticlePreview>();

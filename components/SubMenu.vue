@@ -1,9 +1,10 @@
 <template>
   <div class="sub_menu" :class="{'show_menu': state.downButtonClicked , 'drop_down':dropDownButtonClicked}">
-    <sub-menu-item v-for="subCategory in subCategories"
-                   :key="subCategory.subTitle"
-                   :sub-title="subCategory.subTitle"
-                   :title="title"
+    <sub-menu-item v-for="[k,v] in subCategoryMap"
+                   :key="k"
+                   :sub-name="k"
+                   :num="v"
+                   :name="name"
     />
   </div>
 </template>
@@ -18,8 +19,8 @@ export default defineComponent({
     SubMenuItem
   },
   props:[
-    'subCategories',
-    'title',
+    'subCategoryMap',
+    'name',
     'downButtonClicked'
   ],
   setup(props){

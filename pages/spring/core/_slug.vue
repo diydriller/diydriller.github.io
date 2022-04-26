@@ -12,7 +12,7 @@ export default  defineComponent({
   setup(){
     const { $content,params} = useContext();
     const article = useAsync(()=>{
-      return $content('backend/spring', params.value.slug)
+      return $content('spring/core', params.value.slug)
         .fetch<Article>();
     });
 

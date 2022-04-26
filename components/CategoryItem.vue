@@ -2,14 +2,14 @@
   <div class="item">
     <div class="category_item">
       <span class="category_img">
-        <img :src="require(`~/assets/icon/${title}.png`)">
+        <img :src="require(`~/assets/icon/${name}.png`)">
       </span>
-      <span class="category_name" :class="{'drop_down':dropDownButtonClicked}">{{title}}</span>
+      <span class="category_name" :class="{'drop_down':dropDownButtonClicked}">{{name}}</span>
       <i class='bx bx-chevron-down' @click.prevent="toggleMenu" :class="{'show_menu': downButtonClicked , 'drop_down':dropDownButtonClicked }" ></i>
     </div>
     <sub-menu
-      :subCategories="subCategories"
-      :title="title"
+      :subCategoryMap="subCategoryMap"
+      :name="name"
       :downButtonClicked="downButtonClicked"
     />
   </div>
@@ -25,7 +25,7 @@ export default defineComponent({
   components:{
     SubMenu
   },
-  props:['title','icon','subCategories'],
+  props:['name','icon','subCategoryMap'],
   setup(){
     const store=useStore<ButtonStoreType>();
 

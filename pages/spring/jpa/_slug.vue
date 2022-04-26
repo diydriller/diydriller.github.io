@@ -11,13 +11,12 @@ import {Article} from "@/interfaces/Article";
 export default  defineComponent({
   setup(){
     const { $content,params} = useContext();
-
     const article = useAsync(()=>{
-      return $content('frontend/vue', params.value.slug)
+      return $content('spring/jpa', params.value.slug)
         .fetch<Article>();
     })
 
-    return { article }
+    return {article}
   }
 })
 </script>
