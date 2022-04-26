@@ -1,0 +1,1 @@
+__NUXT_JSONP__("/vue/core", {data:[{}],fetch:{},mutations:[]});

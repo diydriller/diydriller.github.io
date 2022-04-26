@@ -1,0 +1,1 @@
+__NUXT_JSONP__("/spring/core/test1", {data:[{}],fetch:{},mutations:[]});

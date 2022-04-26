@@ -1,0 +1,1 @@
+__NUXT_JSONP__("/spring/jpa", {data:[{}],fetch:{},mutations:[]});
