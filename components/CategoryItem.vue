@@ -21,6 +21,7 @@ import {computed, defineComponent, ref, useStore} from '@nuxtjs/composition-api'
 import SubMenu from '@/components/SubMenu.vue';
 import {ButtonStoreType} from "~/store/button";
 
+
 export default defineComponent({
   components:{
     SubMenu

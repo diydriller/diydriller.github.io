@@ -61,7 +61,6 @@ export default defineComponent({
       $content({deep: true}).fetch()
     );
 
-
     onBeforeMount(()=>{
       for(let index=0;index<articles.value.length;index++){
         let article=articles.value[index];
