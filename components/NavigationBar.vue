@@ -9,8 +9,9 @@
 </template>
 
 <script lang="ts">
-import {computed, defineComponent, ref, useStore} from '@nuxtjs/composition-api';
+import {computed, defineComponent, onMounted, ref, useStore} from '@nuxtjs/composition-api';
 import { ButtonStoreType } from "~/store/button"
+
 
 export default defineComponent({
   setup(){

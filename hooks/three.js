@@ -29,6 +29,11 @@ export default (width,height)=>{
   const raycaster=new Raycaster();
 
   renderer.setSize(world.size.width,world.size.height);
+  renderer.domElement.addEventListener( 'webglcontextlost', ()=> {
+    location.reload();
+  });
+
+
   const camera=new PerspectiveCamera(75,world.size.width/world.size.height,0.1,1000);
 
 
@@ -112,9 +117,9 @@ export default (width,height)=>{
   }
 
 
-  addEventListener('mousemove',()=>{
-    mouse.x=2*(event.clientX/innerWidth)-1;
-    mouse.y=-2*(event.clientY/innerHeight)+1;
+  addEventListener('mousemove',(e)=>{
+    mouse.x=2*(e.clientX/innerWidth)-1;
+    mouse.y=-2*(e.clientY/innerHeight)+1;
   })
 
 

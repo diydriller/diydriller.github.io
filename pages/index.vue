@@ -4,7 +4,7 @@
 </template>
 
 <script>
-import {computed, defineComponent, onMounted, onUpdated, ref, useStore} from '@nuxtjs/composition-api';
+import {computed, defineComponent, onBeforeUnmount, onMounted, onUpdated, ref, useStore} from '@nuxtjs/composition-api';
 import renderFunction from '~/hooks/three.js';
 
 // Todo : typescript 변환작업 해야함
@@ -16,20 +16,22 @@ export default defineComponent({
 
     const dropDownButtonClicked = ref(computed(()=>store.getters["button/dropDownButtonState"]));
 
-
-    onUpdated(()=>{
+    const handleResize=()=>{
       document.querySelector(".index_container").innerHTML='';
-      if(dropDownButtonClicked.value){
-        renderFunction(containerElement.value.clientWidth,screen.height);
-        return;
-      }
       renderFunction(containerElement.value.clientWidth,screen.height);
-    })
+    }
+
+    onUpdated(handleResize);
 
     onMounted(()=>{
-
+      window.addEventListener('resize', handleResize);
       renderFunction(containerElement.value.clientWidth,screen.height);
     });
+
+    onBeforeUnmount(()=>{
+      console.log('unmount');
+      window.removeEventListener('resize', handleResize);
+    })
 
 
 
