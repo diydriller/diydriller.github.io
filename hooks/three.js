@@ -1,7 +1,7 @@
 import {
   AdditiveBlending, BackSide, BufferGeometry, Float32BufferAttribute, Group,
   Mesh,
-  PerspectiveCamera, Points, PointsMaterial,
+  PerspectiveCamera, Points, PointsMaterial, Raycaster,
   Scene,
   ShaderMaterial,
   SphereGeometry,
@@ -21,17 +21,12 @@ export default (width,height)=>{
     size:{
       width: width,
       height: height
-    },
-    plane:{
-      width:400,
-      height:400,
-      widthSegments:50,
-      heightSegments:50
     }
   }
 
   const scene=new Scene();
   const renderer=new WebGLRenderer();
+  const raycaster=new Raycaster();
 
   renderer.setSize(world.size.width,world.size.height);
   const camera=new PerspectiveCamera(75,world.size.width/world.size.height,0.1,1000);
@@ -43,9 +38,6 @@ export default (width,height)=>{
 
   const sphere=new Mesh(
     new SphereGeometry(5,50,50),
-    // new THREE.MeshBasicMaterial({
-    //   map: new THREE.TextureLoader().load('./img/globe.jpg')
-    // })
     new ShaderMaterial({
       vertexShader,
       fragmentShader,
@@ -107,12 +99,16 @@ export default (width,height)=>{
   function animate(){
     requestAnimationFrame(animate);
     renderer.render(scene,camera);
+    raycaster.setFromCamera(mouse,camera);
+    const intersects=raycaster.intersectObject(sphere);
     sphere.rotation.y+=0.001;
-    gsap.to(group.rotation,{
-      x: -mouse.y*0.5,
-      y:mouse.x*0.5,
-      duration: 2
-    })
+    if(intersects.length>0){
+      gsap.to(group.rotation,{
+        x: -mouse.y,
+        y:mouse.x,
+        duration: 2
+      })
+    }
   }
 
 

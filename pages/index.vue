@@ -7,6 +7,8 @@
 import {computed, defineComponent, onMounted, onUpdated, ref, useStore} from '@nuxtjs/composition-api';
 import renderFunction from '~/hooks/three.js';
 
+// Todo : typescript 변환작업 해야함
+
 export default defineComponent({
   setup(){
     const store=useStore();
@@ -14,34 +16,19 @@ export default defineComponent({
 
     const dropDownButtonClicked = ref(computed(()=>store.getters["button/dropDownButtonState"]));
 
-    const size={
-      before: {
-        width: undefined,
-        height: undefined
-      },
-      after:{
-        width: undefined,
-        height: undefined
-      }
-    }
 
     onUpdated(()=>{
       document.querySelector(".index_container").innerHTML='';
       if(dropDownButtonClicked.value){
-        renderFunction(size.after.width,size.after.height);
+        renderFunction(containerElement.value.clientWidth,screen.height);
         return;
       }
-      renderFunction(size.before.width, size.before.height);
+      renderFunction(containerElement.value.clientWidth,screen.height);
     })
 
     onMounted(()=>{
-      size.before.width=screen.width-66;
-      size.before.height=screen.height;
-      size.after.width=screen.width+116;
-      size.after.height=screen.height;
 
-      renderFunction(size.before.width,size.before.height);
-
+      renderFunction(containerElement.value.clientWidth,screen.height);
     });
 
 
